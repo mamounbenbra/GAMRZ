@@ -9,15 +9,6 @@
       <%= f.input :password,
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
-      <%= f.input :first_name, autofocus: true %>
-      <%= f.input :last_name, autofocus: true %>
-      <%= f.input :username, autofocus: true %>
-      <%= f.input :region, autofocus: true %>
-      <%= f.input :age, autofocus: true %>
-      <%= f.input :language, as: :select, collection: User::LANGUAGES %>
-      <%= f.input :rank, as: :select, collection: User::RANKS %>
-      <%= f.input :style, as: :select, collection: User::STYLES %>
-      <%= f.input :photo, as: :file %>
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
 
