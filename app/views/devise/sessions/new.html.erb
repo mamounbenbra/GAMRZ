@@ -17,6 +17,7 @@
       <%= f.input :language, as: :select, collection: User::LANGUAGES %>
       <%= f.input :rank, as: :select, collection: User::RANKS %>
       <%= f.input :style, as: :select, collection: User::STYLES %>
+      <%= f.input :photo, as: :file %>
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
 

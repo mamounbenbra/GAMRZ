@@ -4,6 +4,7 @@ class User < ApplicationRecord
   LANGUAGES = [ "Mandarin Chinese", "Spanish", "English", "Hindi/Urdu", "Arabic", "Bengali", "Portuguese", "Russian", "Japanese", "German", "Javanese", "Punjabi", "Wu", "French", "Telugu", "Vietnamese", "Marathi", "Korean", "Tamil", "Italian", "Turkish", "Cantonese/Yue"]
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one_attached :photo
   has_many :matches
   has_many :reviews
   validates :first_name, presence: true
