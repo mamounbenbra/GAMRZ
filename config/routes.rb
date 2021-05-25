@@ -5,4 +5,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
     resources :matches, only: [:new, :create]
   end
+  resources :chatrooms, only: :show do 
+    resources :messages, only: :create
+  end
 end
