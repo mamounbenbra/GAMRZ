@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :users, only: [:show, :index] do
     resources :reviews, only: [:new, :create]
-    resources :matches, only: [:new, :create]
+    resources :matches, only: [:new, :create, :index]
   end
   resources :chatrooms, only: :show do
     resources :messages, only: :create

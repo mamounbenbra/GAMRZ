@@ -1,0 +1,3 @@
+<% @matches.where(mutual: true).each do |f| %>
+    <%= f.to_user.username %>
+<% end %>
