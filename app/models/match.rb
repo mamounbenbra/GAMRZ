@@ -3,3 +3,4 @@ class Match < ApplicationRecord
   belongs_to :to_user, class_name: "User"
   belongs_to :chatroom, optional: true
 end
+
