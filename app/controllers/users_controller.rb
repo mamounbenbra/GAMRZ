@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   def index
-    @user = User.all.where.not(id: current_user.id).sample
+    ids = []
+    Match.where(from_user_id: current_user.id).each do |item|
+      ids << item.to_user_id
+    end
+    ids << current_user.id
+
+    @user = User.all.where.not(id: ids).sample
   end
 
   def show
