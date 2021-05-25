@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     ids = []
-    Match.where(from_user_id: current_user.id).each do |item|
+    Match.where(from_user_id: current_user.id).or(Match.where(mutual: false)).each do |item|
       ids << item.to_user_id
     end
     ids << current_user.id
@@ -28,6 +28,16 @@ class UsersController < ApplicationController
   end
 
   def dislike
+    @user = User.find(params[:id])
+    potential_match = Match.where(to_user_id: current_user.id, from_user_id: @user.id)
+    already_liked = potential_match.count
+    they_like_us = already_liked.positive?
+    if they_like_us
+      potential_match.update(mutual: false)
+    else
+      @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: nil)
+      @match.save
+    end
     redirect_to users_path
   end
 end
