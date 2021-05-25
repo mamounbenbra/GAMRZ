@@ -1,15 +1,9 @@
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
-    <div class="message-container" id="message-<%= message.id %>">
-      <i class="author">
-        <span><%= message.user.username %></span>
-        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-      </i>
-      <p><%= message.content %></p>
-    </div>
+<div class="container justify-content-center mt-4">
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <%= render @chatroom.messages %>
+  </div>
+  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false %>
+    <%= f.submit%>
   <% end %>
-      <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-        <%= f.input :content, label: false %>
-        <%= f.submit%>
-    <% end %>
 </div>

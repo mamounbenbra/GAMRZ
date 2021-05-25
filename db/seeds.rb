@@ -11,3 +11,4 @@ Chatroom.destroy_all
 User.create!(first_name: 'Henrik', last_name: 'Duerrfeld', username: 'admin1', email: 'henrik.duerrfeld.20002@gmail.com', password: '123456', rank: 'Silver I', age: 18, language: 'English', style: 'Fragger', region: 'EU' )
 User.create!(first_name: 'julien', last_name: 'Dumont', username: 'admin2', email: 'julien@gmail.com', password: '123456', rank: 'Silver I', age: 18, language: 'English', style: 'Fragger', region: 'EU')
 Chatroom.create
+Chatroom.create
