@@ -16,8 +16,8 @@
       </div>
     </div>
     <div class="btn-group col-sm-12 col-md-6 mr-0 ml-0" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary"><%= link_to 'Swipe left', users_path %></button>
-      <button type="button" class="btn btn-secondary"><%= link_to 'Swipe right', users_path %></button>
+      <button type="button" class="btn btn-secondary" data-id="<%= @user.id%>"><%= link_to 'Swipe left', dislike_user_path(@user) %></button>
+      <button type="button" class="btn btn-secondary" data-id="<%= @user.id%>"><%= link_to 'Swipe right', approve_user_path(@user) %></button>
     </div>
   </div>
 </div>
