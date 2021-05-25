@@ -16,15 +16,15 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :first_name, autofocus: true %>
-      <%= f.input :last_name, autofocus: true %>
-      <%= f.input :username, autofocus: true %>
-      <%= f.input :region, autofocus: true %>
-      <%= f.input :age, autofocus: true %>
-      <%= f.input :language, as: :select, collection: User::LANGUAGES %>
-      <%= f.input :rank, as: :select, collection: User::RANKS %>
-      <%= f.input :style, as: :select, collection: User::STYLES %>
-      <%= f.input :photo, as: :file %>
+      <%= f.input :first_name, required: true, autofocus: true %>
+      <%= f.input :last_name, required: true, autofocus: true %>
+      <%= f.input :username, required: true, autofocus: true %>
+      <%= f.input :region, required: true, autofocus: true %>
+      <%= f.input :age, required: true, autofocus: true %>
+      <%= f.input :language, required: true, as: :select, collection: User::LANGUAGES %>
+      <%= f.input :rank, required: true, as: :select, collection: User::RANKS %>
+      <%= f.input :style, required: true, as: :select, collection: User::STYLES %>
+      <%= f.input :photo, required: true, as: :file %>
     </div>
 
     <div class="form-actions">
