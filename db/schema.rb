@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_145246) do
+ActiveRecord::Schema.define(version: 2021_05_25_102437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 2021_05_24_145246) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "matches", force: :cascade do |t|
     t.integer "from_user_id"
     t.integer "to_user_id"
@@ -48,10 +53,10 @@ ActiveRecord::Schema.define(version: 2021_05_24_145246) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.integer "to_user_id"
-    t.integer "from_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "chatroom_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,4 +82,6 @@ ActiveRecord::Schema.define(version: 2021_05_24_145246) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
 end
