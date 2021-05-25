@@ -1,3 +1,4 @@
-<% @matches.where(mutual: true).each do |f| %>
-    <%= f.to_user.username %>
+<% @matches.where(mutual: true).each do |match| %>
+    <%= match.to_user.username %>
+    <%= link_to "send message", chatroom_path(match.chatroom) %>
 <% end %>
