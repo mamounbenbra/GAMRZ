@@ -50,7 +50,8 @@
     </div>
   </div>
 <% else %>
-  <h1>No users to match anymore, comme back later le sang</h1>
+  <h2 class="text-index">No users to match anymore, comme back later le sang</h2>
 <% end %>
-
+<%= link_to "your matches", user_matches_path(current_user)%>
+<div id="map"><%= link_to "home page", root_path%></div>
 

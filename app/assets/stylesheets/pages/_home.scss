@@ -1,1 +1,126 @@
 // Specific CSS for your home-page
+.title {
+    color: black;
+}
+
+.home-page {
+    margin-left: 40%;
+    margin-top: 24px;
+}
+
+.text-index {
+    color: #48dbfb;
+    justify-content: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --text-neon: #48dbfb;
+  --color-bg: #151920;
+}
+a {
+  text-decoration: none;
+}
+body {
+  background: #151920;
+  font-family: 'Poppins', 'Courier New', Courier, monospace;
+}
+.neon-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  color: var(--text-neon);
+  font-size: 3em;
+  border: var(--text-neon) 7px solid;
+  padding: 0.3em 1em;
+  border-radius: 0.5em;
+  box-shadow: inset 0 0 0.8em 0 var(--text-neon), 0 0 0.5em 0 var(--text-neon);
+  transition: all 0.3s ease-in-out;
+}
+.neon-btn::before {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--text-neon);
+  display: block;
+  left: 0%;
+  top: 140%;
+  transform: perspective(1em) rotateX(40deg) scale(1 , 0.35);
+  filter: blur(1.5em);
+  opacity: 0.7;
+  animation-duration: 1.2s;
+}
+.neon-btn:hover,
+.neon-btn:focus {
+  text-shadow: none;
+  animation: neon 1.2s cubic-bezier(.54,.56,0,-0.01) infinite;
+}
+.neon-btn::after {
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5em;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 5rem 2rem var(--text-neon),0 0 0.5rem 0.2rem var(--text-neon);
+  opacity: 0;
+  animation-duration: 1.2s;
+}
+.neon-btn:hover::after,
+.neon-btn:focus::after {
+  animation: neon-bg cubic-bezier(.54,.56,0,-0.01) infinite;
+  animation-duration: 1.2s;
+}
+.neon-btn:hover::before,
+.neon-btn:focus::before {
+  animation: neon-bg2 cubic-bezier(.54,.56,0,-0.01) infinite;
+  animation-duration: 1.2s;
+}
+@keyframes neon {
+  0% {
+    background: var(--text-neon);
+    color: var(--color-bg);
+  }
+  50% {
+    background: transparent;
+    color: var(--text-neon);
+  }
+  100% {
+    background: var(--text-neon);
+    color: var(--color-bg);
+  }
+}
+@keyframes neon-bg {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes neon-bg2 {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+
+
+
+
+
+
