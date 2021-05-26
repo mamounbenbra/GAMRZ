@@ -1,8 +1,6 @@
-<% @matches.where(mutual: true).each do |match| %>
+<% @matches.each do |match| %>
     <div id="map">
-        <div class="text-index">
-            <%= match.to_user.username %>
-        </div>
+    <%= match.to_user.username %>
     <%= link_to "send message", chatroom_path(match.chatroom) %>
     </div>
 <% end %>
