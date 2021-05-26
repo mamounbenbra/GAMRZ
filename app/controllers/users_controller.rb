@@ -5,7 +5,7 @@ class UsersController < ApplicationController
       ids_to_kill << item.to_user_id
     end
     ids_to_kill << current_user.id
-
+    #@user = current_user
     @user = User.all.where.not(id: ids_to_kill).sample
   end
 
