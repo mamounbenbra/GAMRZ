@@ -38,8 +38,8 @@ class UsersController < ApplicationController
     already_liked = potential_match.count
     they_like_us = already_liked.positive?
     if they_like_us
-      @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: true)
       chatroom = Chatroom.create!
+      @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: true, chatroom_id: chatroom.id)
       potential_match.update(mutual: true, chatroom_id: chatroom.id)
     else
       @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id)
