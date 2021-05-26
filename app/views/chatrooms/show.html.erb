@@ -1,5 +1,5 @@
 <div class="container justify-content-center mt-4">
-  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <div id="messages" class="chat-box" data-chatroom-id="<%= @chatroom.id %>">
     <%= render @chatroom.messages %>
   </div>
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
