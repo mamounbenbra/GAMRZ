@@ -9,20 +9,20 @@
     class: "form-control",
     placeholder: "Age"
   %>
-  <%= text_field_tag :rank,
-    params[:rank],
-    class: "form-control",
-    placeholder: "Rank"
+  <%= select_tag :rank,
+    options_for_select(User::RANKS, selected: params[:rank]),
+    include_blank: "Rank",
+    class: "form-control"
   %>
-  <%= text_field_tag :style,
-    params[:style],
-    class: "form-control",
-    placeholder: "Style"
+  <%= select_tag :style,
+    options_for_select(User::STYLES, selected: params[:style]),
+    include_blank: "Style",
+    class: "form-control"
   %>
-  <%= text_field_tag :language,
-    params[:language],
-    class: "form-control",
-    placeholder: "Language"
+  <%= select_tag :language,
+    options_for_select(User::LANGUAGES, selected: params[:language]),
+    include_blank: "Language",
+    class: "form-control"
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
