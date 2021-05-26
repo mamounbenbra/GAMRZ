@@ -1,5 +1,5 @@
 <div class="container justify-content-center mt-4">
-  <h1><%= @match.to_user.username %></h1>
+  <h1><%= @match.to_user == current_user ? @match.from_user.username : @match.to_user.username %></h1>
   <div id="messages" class="chat-box" data-chatroom-id="<%= @chatroom.id %>">
     <%= render @chatroom.messages %>
   </div>
