@@ -1,10 +1,10 @@
 <div class='container mt-4 col-sm-12 col-md-5 justify-content-center'>
-  <h2>Sign up</h2>
+  <h2 class="text-index">Sign up</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs">
+    <div class="text-index">
       <%= f.input :email,
                   required: true,
                   autofocus: true,
