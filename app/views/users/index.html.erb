@@ -1,5 +1,33 @@
+<%= form_tag users_path, method: :get do %>
+  <%= text_field_tag :region,
+    params[:region],
+    class: "form-control",
+    placeholder: "Region"
+  %>
+  <%= text_field_tag :age,
+    params[:age],
+    class: "form-control",
+    placeholder: "Age"
+  %>
+  <%= text_field_tag :rank,
+    params[:rank],
+    class: "form-control",
+    placeholder: "Rank"
+  %>
+  <%= text_field_tag :style,
+    params[:style],
+    class: "form-control",
+    placeholder: "Style"
+  %>
+  <%= text_field_tag :language,
+    params[:language],
+    class: "form-control",
+    placeholder: "Language"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
 
-<% if @user != nil%>
+<% if @user != nil %>
   <div class="container text-center">
     <div class="d-flex flex-column align-items-center">
       <div class="cont col-sm-12 col-md-6 col-lg-4 w-100">
