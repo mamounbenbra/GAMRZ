@@ -1,6 +1,6 @@
 <div class="container justify-content-center mt-4">
-  <h1><%= @match.to_user.username %></h1>
-  <div id="messages" class="chat-box" data-chatroom-id="<%= @chatroom.id %>">
+  <h2 class="text-center bg-white user-title"><%= @match.to_user.username %></h1>
+  <div id="messages" class="chat-box bg-white" data-chatroom-id="<%= @chatroom.id %>">
     <%= render @chatroom.messages %>
   </div>
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>

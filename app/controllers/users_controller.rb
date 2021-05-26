@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     end
     ids_to_kill << current_user.id
 
+ 
+    @users = User.all.where.not(id: ids_to_kill).sample
+
+
     @users = User.all.where.not(id: ids_to_kill)
 
     if params[:region].present?
