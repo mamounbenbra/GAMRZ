@@ -1,26 +1,32 @@
-<%= form_tag users_path, method: :get do %>
-  <%= text_field_tag :region,
-    params[:region],
-    class: "form-control",
-    placeholder: "Region"
-  %>
-  <%= select_tag :rank,
-    options_for_select(User::RANKS, selected: params[:rank]),
-    include_blank: "Rank",
-    class: "form-control"
-  %>
-  <%= select_tag :style,
-    options_for_select(User::STYLES, selected: params[:style]),
-    include_blank: "Style",
-    class: "form-control"
-  %>
-  <%= select_tag :language,
-    options_for_select(User::LANGUAGES, selected: params[:language]),
-    include_blank: "Language",
-    class: "form-control"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+
+<div class="d-flex flex-column align-items-center">
+  <button class="btn btn-primary">Add filter</button>
+  <div class="cont col-sm-12 col-md-6 col-lg-4 w-100 p-3 d-none" style="background-color: white;">
+    <%= form_tag users_path, method: :get do %>
+      <%= text_field_tag :region,
+        params[:region],
+        class: "form-control",
+        placeholder: "Region"
+      %>
+      <%= select_tag :rank,
+        options_for_select(User::RANKS, selected: params[:rank]),
+        include_blank: "Rank",
+        class: "form-control"
+      %>
+      <%= select_tag :style,
+        options_for_select(User::STYLES, selected: params[:style]),
+        include_blank: "Style",
+        class: "form-control"
+      %>
+      <%= select_tag :language,
+        options_for_select(User::LANGUAGES, selected: params[:language]),
+        include_blank: "Language",
+        class: "form-control"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
 <% if @user != nil %>
   <div class="container text-center">
@@ -46,6 +52,8 @@
   </div>
 <% elsif params[:language] != "" || params[:style] != "" || params[:region] != "" || params[:rank] != "" %>
   <h2 class="text-index"> No users matching your filter, please change your preferences </h2>
+<% elsif params[:region] == nil %>
+  <h2 class="text-index"> No users to match anymore, come back later le sang </h2>
 <% else %>
   <h2 class="text-index"> No users to match anymore, come back later le sang </h2>
 <% end %>
