@@ -21,6 +21,6 @@ class User < ApplicationRecord
   validates :description, length: { maximum: 400 }
   validates :style, inclusion: {in: STYLES, message: "-- Choose a style from the dropdown"}
   validates :rank, inclusion: {in: RANKS, message: "-- Choose your rank from the dropdown"}
-  validates :regions, inclusion: {in: REGIONS, message: "-- Choose your regions from the dropdown"}
+  validates :region, inclusion: {in: REGIONS, message: "-- Choose your regions from the dropdown"}
   validates :language, inclusion: {in: LANGUAGES, message: "-- Choose your language from the dropdown"}
 end

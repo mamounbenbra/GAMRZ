@@ -51,8 +51,6 @@
   </div>
 <% elsif params[:language] != "" || params[:style] != "" || params[:region] != "" || params[:rank] != "" %>
   <h2 class="text-index"> No users matching your filter, please change your preferences </h2>
-<% elsif params[:region] == nil %>
-  <h2 class="text-index"> No users to match anymore, come back later le sang </h2>
 <% else %>
   <h2 class="text-index"> No users to match anymore, come back later le sang </h2>
 <% end %>
