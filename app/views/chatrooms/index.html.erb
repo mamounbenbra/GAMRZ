@@ -1,11 +1,18 @@
-<% if @chatroom.present? %>
-  <nav class="nav flex-column">
-  <% @chatroom.each do |room| %>
-    <%= link_to room.name, room_path(room), class: "nav-link room-nav-link" %>
-    <% end %>
-  </nav>
-<% else %>
-  <div class="text-muted">
-    <p>The are no rooms</p>
-  </div>
-<% end %>
+<div class="container chat-box bg-white">
+  <% if @chatrooms.any? %>
+    <nav class="nav flex-column bg-white">
+    <% @chatrooms.each do |chatroom| %>
+      <div class="d-flex align-items-center chat-contact">
+        <div>
+          <img class="user_img" src="<%= chatroom.other_user(current_user).photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
+        </div>
+        <%= link_to chatroom.other_user(current_user).username , chatroom_path(chatroom), class: "nav-link room-nav-link" %>
+      </div>
+      <% end %>
+    </nav>
+  <% else %>
+    <div class="text-muted">
+      <p>The are no chatrooms</p>
+    </div>
+  <% end %>
+</div>
