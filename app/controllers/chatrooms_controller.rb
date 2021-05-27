@@ -7,6 +7,8 @@ class ChatroomsController < ApplicationController
       @chatrooms = @chatrooms.select do |chatroom|
         chatroom.other_user(current_user).username.include?(params[:query])
       end
+     @current_user = current_user
+    authorize @current_user
     end
   end
 
@@ -14,5 +16,6 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
     @match = Match.find_by(chatroom: @chatroom)
+    authorize @chatroom
   end
 end
