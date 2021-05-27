@@ -1,4 +1,19 @@
 class UsersController < ApplicationController
+  after_action :verify_authorized
+
+
+  def edit
+    @user = User.find(params[:id])
+    authorize @user
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user)
+    authorize @user
+  end
+
   def index
     ids_to_kill = []
     Match.where(from_user_id: current_user.id).each do |item|
@@ -6,11 +21,7 @@ class UsersController < ApplicationController
     end
     ids_to_kill << current_user.id
 
-
-    @users = User.all.where.not(id: ids_to_kill).sample
-
-
-    @users = User.all.where.not(id: ids_to_kill)
+    @users = policy_scope(User).where.not(id: ids_to_kill)
 
     if params[:region].present?
       @users = @users.where(region: params[:region])
@@ -26,11 +37,15 @@ class UsersController < ApplicationController
     end
 
     @user = @users.sample
+    @current_user = current_user
+    authorize @current_user
 
   end
 
   def show
     @user = User.find(params[:id])
+    @current_user = current_user
+    authorize @user
   end
 
   def like
@@ -47,6 +62,8 @@ class UsersController < ApplicationController
     end
     @match.save
     redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language])
+    @current_user = current_user
+    authorize @current_user
   end
 
   def dislike
@@ -62,5 +79,7 @@ class UsersController < ApplicationController
     end
     @match.save
     redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language])
+    @current_user = current_user
+    authorize @current_user
   end
 end

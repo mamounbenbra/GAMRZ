@@ -10,6 +10,8 @@ class MessagesController < ApplicationController
         else
           render "chatrooms/show"
         end
+        @current_user = current_user
+        authorize @current_user
     end
 
     private
