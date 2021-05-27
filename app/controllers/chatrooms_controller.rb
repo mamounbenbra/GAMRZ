@@ -8,7 +8,9 @@ class ChatroomsController < ApplicationController
         chatroom.other_user(current_user).username.include?(params[:query])
       end
     end
-    authorize @chatrooms
+    unless @chatrooms == []
+      authorize @chatrooms
+    end
   end
 
   def show
