@@ -1,8 +1,8 @@
 <%= form_tag users_path, method: :get do %>
-  <%= text_field_tag :region,
-    params[:region],
-    class: "form-control",
-    placeholder: "Region"
+  <%= select_tag :region,
+    options_for_select(User::REGIONS, selected: params[:region]),
+    include_blank: "Region",
+    class: "form-control"
   %>
   <%= select_tag :rank,
     options_for_select(User::RANKS, selected: params[:rank]),
