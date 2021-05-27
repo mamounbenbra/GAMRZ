@@ -35,10 +35,42 @@
 .chat-box {
   overflow-y: scroll;
   height: 575px;
+  padding: 12px;
 }
 
 .user-title {
   color: #29335C;
   font-size: 32px;
   font-weight: bold;
+}
+
+
+.form_wrapper {
+  position: relative;
+  .fa-search {
+    position: absolute;
+    right: 6px;
+    top: 8px;
+  }
+  input[type="submit"] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+  }
+}
+
+.chatbox-contact {
+  background: #454753;
+}
+
+.chat-contact img {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.chat-contact {
+  background: #454753;
 }
