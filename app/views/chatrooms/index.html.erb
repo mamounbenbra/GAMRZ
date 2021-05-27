@@ -1,4 +1,13 @@
 <div class="container chat-box bg-white">
+  <%= form_tag chatrooms_path, method: :get do %>
+    <div style="display: flex; margin-left: -10px; margin-right: -10px">
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a gamrz"%>
+      <%= submit_tag "Search" %>
+    </div>
+  <% end %>
   <% if @chatrooms.any? %>
     <nav class="nav flex-column bg-white">
     <% @chatrooms.each do |chatroom| %>
