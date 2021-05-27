@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     end
     ids_to_kill << current_user.id
 
- 
+
     @users = User.all.where.not(id: ids_to_kill).sample
 
 
@@ -14,9 +14,6 @@ class UsersController < ApplicationController
 
     if params[:region].present?
       @users = @users.where(region: params[:region])
-    end
-    if params[:age].present?
-      @users = @users.where(age: params[:age])
     end
     if params[:rank].present?
       @users = @users.where(rank: params[:rank])
@@ -49,7 +46,7 @@ class UsersController < ApplicationController
       @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id)
     end
     @match.save
-    redirect_to users_path
+    redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language])
   end
 
   def dislike
@@ -64,6 +61,6 @@ class UsersController < ApplicationController
       @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: nil)
     end
     @match.save
-    redirect_to users_path
+    redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language])
   end
 end
