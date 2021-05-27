@@ -1,5 +1,5 @@
 <div class="d-flex flex-column align-items-center">
-  <button class="btn btn-primary" id="btn-hidden">Add filter</button>
+  <button class="btn mt-4 btn-primary" id="btn-hidden">Add filter</button>
   <div class="cont col-sm-12 col-md-6 col-lg-4 w-100 p-3 d-none" style="background-color: white;" id="btn-hidden2">
     <%= form_tag users_path, method: :get do %>
       <%= select_tag :region,
@@ -32,11 +32,11 @@
     <div class="d-flex flex-column align-items-center">
       <div class="cont col-sm-12 col-md-6 col-lg-4 w-100 border-neon">
         <div class="display-e">
-          <img src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
+          <img class="rounded-circle" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
           <p>⭐️⭐️⭐️⭐️</p>
         </div>
         <div class="display-l">
-          <h1><%= @user.username%></h1>
+          <h1 id='username'><%= @user.username%></h1>
           <p><%= @user.age%></p>
           <p><%= @user.rank%></p>
           <p><%= @user.region%></p>
@@ -44,8 +44,8 @@
         </div>
       </div>
       <div class="btn-group col-sm-12 col-md-6 mr-0 ml-0" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary" data-id="<%= @user.id%>"><%= link_to 'Swipe left', dislike_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]) %></button>
-        <button type="button" class="btn btn-secondary" data-id="<%= @user.id%>"><%= link_to 'Swipe right', approve_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]) %></button>
+        <button type="button" class="btn btn-warning"  data-id="<%= @user.id%>"><%= link_to 'Nop', dislike_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]) %></button>
+        <button type="button" class="btn btn-success"  data-id="<%= @user.id%>"><%= link_to 'Like', approve_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]) %></button>
       </div>
     </div>
   </div>
@@ -54,8 +54,8 @@
 <% else %>
   <h2 class="text-index"> No users to match anymore, come back later le sang </h2>
 <% end %>
-<%= link_to "your matches", user_matches_path(current_user)%>
+<%= link_to "your matches", user_matches_path(current_user), class:"btn mb-2 mt-2 ml-4 btn-primary"%>
 
 <div id="map">
-  <%= link_to "home page", root_path%>
+  <%= link_to "home page", root_path, class:"btn btn-primary ml-4" %>
 </div>

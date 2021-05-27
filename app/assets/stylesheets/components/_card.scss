@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 *{
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
   margin: 0px;
   padding: 0px;
 }
@@ -22,6 +23,10 @@ p {
   margin-bottom: 0px;
 }
 
+#username{
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 2px;
+}
 .display{
   display: flex;
   align-items: center;
