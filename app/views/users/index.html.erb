@@ -30,7 +30,7 @@
 <% if @user != nil %>
   <div class="container text-center">
     <div class="d-flex flex-column align-items-center">
-      <div class="cont col-sm-12 col-md-6 col-lg-4 w-100">
+      <div class="cont col-sm-12 col-md-6 col-lg-4 w-100 border-neon">
         <div class="display-e">
           <img src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
           <p>⭐️⭐️⭐️⭐️</p>

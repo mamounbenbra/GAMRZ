@@ -1,9 +1,17 @@
-<div class="card">
-
-  <%= @user.photo %>
-  <%= @user.username %>
-  <%= @user.description %>
-  <%= @user.rank %>
-  <%= @user.style %>
-
+<div class="card col-sm-12 col-md-6 mr-0 ml-5 border-neon" style="width: 36rem; text-align: left; margin: auto; margin-top: 24px;">
+  <img src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>" alt="Card image cap" class="card-img-top mt-3" alt='photo' style= "height: 250px; object-fit: cover;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @user.username %></h5>
+    <p class="card-text"><%= @user.description %></p>
+    <h5><%= @user.first_name %><%= @user.last_name %></h5>
+    <h5><%= @user.region %></h5>
+    <h5><%= @user.rank %></h5>
+    <h5><%= @user.language %></h5>
+    <h5><%= @user.style %></h5>
+    <h5><%= @user.age %></h5>
+  </div>
+    <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
 </div>
