@@ -1,5 +1,6 @@
 <% @matches.each do |match| %>
     <div id="map">
+    <p><%= link_to "all chatroom", chatrooms_path %></p>
     <p><%= match.to_user.username %></p>
     <p><%= link_to "send message", chatroom_path(match.chatroom) %></p>
     <p><%= link_to "more about #{match.to_user.username}", user_path(match.to_user_id)%></p>
