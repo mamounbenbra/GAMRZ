@@ -19,7 +19,7 @@
       <%= f.input :first_name, required: true, autofocus: true %>
       <%= f.input :last_name, required: true, autofocus: true %>
       <%= f.input :username, required: true, autofocus: true %>
-      <%= f.input :region, required: true, autofocus: true %>
+      <%= f.input :region, required: true, as: :select, collection: User::REGIONS %>
       <%= f.input :age, required: true, autofocus: true %>
       <%= f.input :language, required: true, as: :select, collection: User::LANGUAGES %>
       <%= f.input :rank, required: true, as: :select, collection: User::RANKS %>
