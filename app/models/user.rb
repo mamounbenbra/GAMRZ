@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :photo
   has_many :matches
+  has_many :chatrooms, through: :matches
   has_many :reviews
   validates :first_name, presence: true
   validates :last_name, presence: true
