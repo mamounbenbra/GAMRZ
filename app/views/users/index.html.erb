@@ -1,12 +1,11 @@
-
 <div class="d-flex flex-column align-items-center">
   <button class="btn btn-primary" id="btn-hidden">Add filter</button>
   <div class="cont col-sm-12 col-md-6 col-lg-4 w-100 p-3 d-none" style="background-color: white;" id="btn-hidden2">
     <%= form_tag users_path, method: :get do %>
-      <%= text_field_tag :region,
-        params[:region],
-        class: "form-control",
-        placeholder: "Region"
+      <%= select_tag :region,
+        options_for_select(User::REGIONS, selected: params[:region]),
+        include_blank: "Region",
+        class: "form-control"
       %>
       <%= select_tag :rank,
         options_for_select(User::RANKS, selected: params[:rank]),
@@ -31,7 +30,7 @@
 <% if @user != nil %>
   <div class="container text-center">
     <div class="d-flex flex-column align-items-center">
-      <div class="cont col-sm-12 col-md-6 col-lg-4 w-100">
+      <div class="cont col-sm-12 col-md-6 col-lg-4 w-100 border-neon">
         <div class="display-e">
           <img src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
           <p>⭐️⭐️⭐️⭐️</p>

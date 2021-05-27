@@ -1,7 +1,13 @@
 class ChatroomsController < ApplicationController
 
   def index
-    @chatrooms = Chatroom.all
+    @chatrooms = Match.where("from_user_id = ? OR to_user_id = ?", current_user.id, current_user.id).map{ |match| match.chatroom }.uniq.reject(&:nil?)
+
+    if params[:query].present?
+      @chatrooms = @chatrooms.select do |chatroom|
+        chatroom.other_user(current_user).username.include?(params[:query])
+      end
+    end
   end
 
   def show
