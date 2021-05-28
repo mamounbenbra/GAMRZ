@@ -33,7 +33,7 @@
       <div class="cont col-sm-12 col-md-6 col-lg-4 w-100 border-neon">
         <div class="display-e">
           <img class="rounded-circle" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
-          <p>⭐️⭐️⭐️⭐️</p>
+
         </div>
         <div class="display-l">
           <h1 id='username'><%= @user.username%></h1>
