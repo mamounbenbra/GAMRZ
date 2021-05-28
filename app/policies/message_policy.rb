@@ -1,8 +1,9 @@
 class MessagePolicy < ApplicationPolicy
+  def create?
+
+      return true
+  end
   class Scope < Scope
-    def create?
-      return true 
-    end
     def resolve
       scope.all
     end
