@@ -13,7 +13,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :username, presence: true
   validates :first_name, presence: true
-  validates :age, presence: true
   validates :rank, presence: true
   validates :language, presence: true
   validates :region, presence: true
