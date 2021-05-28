@@ -74,5 +74,12 @@
 }
 
 .chat-contact {
-  background: #454753;
+  background: #3D348B;
+  border-radius: 2px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.chat-contact > a {
+  color: #48dbfb;
 }

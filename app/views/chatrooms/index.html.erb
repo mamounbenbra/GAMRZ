@@ -1,6 +1,6 @@
-<div class="container chat-box chatbox-contact mt-4 ">
+<div class="container chat-box chatbox-contact mt-4 border-neon ">
   <%= form_tag chatrooms_path, method: :get do %>
-    <div class="d-flex form_wrapper">
+    <div class="d-flex form_wrapper mt-2 mb-2">
     <i class="fas fa-search"></i>
       <%= text_field_tag :query,
         params[:query],
@@ -10,11 +10,11 @@
     </div>
   <% end %>
   <% if @chatrooms.any? %>
-    <nav class="nav flex-column bg-white">
+    <nav class="nav flex-column">
     <% @chatrooms.each do |chatroom| %>
       <div class="d-flex align-items-center chat-contact">
         <div>
-          <img class="user_img" src="<%= chatroom.other_user(current_user).photo.attached? ? (cl_image_path chatroom.other_user(current_user).photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
+          <img class="user_img mb-2 ml-2" src="<%= chatroom.other_user(current_user).photo.attached? ? (cl_image_path chatroom.other_user(current_user).photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
         </div>
         <%= link_to chatroom.other_user(current_user).username , chatroom_path(chatroom), class: "nav-link room-nav-link" %>
       </div>
