@@ -2,7 +2,7 @@
     <p style="margin: 12px;"><%= link_to "All Chatrooms", chatrooms_path, class:"btn-neon" %></p><p style="margin: 12px;"><%= link_to "find more gamrs", users_path, class:"btn-neon"%></p>
 </div>
 <% @matches.each do |match| %>
-    <p style="color: white; margin: 12px; font-size:24px;"><%= match.to_user.username.capitalize %></p>
+    <p style="color: white; margin: 12px; font-size:24px;"><%= match.to_user.username %></p>
     <div class="d-flex justify-content-start">
         <p  style="margin: 12px;"><%= link_to "send a message", chatroom_path(match.chatroom), class:"btn btn-primary" %></p><div id="map" style="margin: 12px;"><%= link_to "more about #{match.to_user.username}", user_path(match.to_user_id), class:"btn  btn-primary"%></div>
     </div>
