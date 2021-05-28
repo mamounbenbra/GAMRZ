@@ -1,13 +1,15 @@
-<div class="container justify-content-center mt-4">
-  <h1><%= @match.to_user == current_user ? @match.from_user.username : @match.to_user.username %></h1>
-  <div id="messages" class="chat-box bg-white" data-chatroom-id="<%= @chatroom.id %>">
-    <%= render @chatroom.messages %>
+<div class="row">
+  <div class=" container col-lg-5 justify-content-center mt-4">
+    <h1><%= @match.to_user == current_user ? @match.from_user.username : @match.to_user.username %></h1>
+    <div id="messages" class="back1 bg-white rounded chat-box" data-chatroom-id="<%= @chatroom.id %>">
+      <%= render @chatroom.messages %>
+    </div>
+      <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+        <%= f.input :content, label: false, style: "width: 100vw" %>
+        <%= f.submit 'send', class: "pr-4 mt-0 pt-0 pb-0 pl-4 bg-primary"%>
+        <% end %>
+    <p><%= link_to "back to your chatroom", chatrooms_path %></p>
+    <p><%= link_to "back to your matches", user_matches_path(current_user)%></p>
   </div>
-  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false %>
-    <%= f.submit%>
-  <% end %>
-  <p><%= link_to "back to your chatroom", chatrooms_path %></p>
-  <p><%= link_to "back to your matches", user_matches_path(current_user)%></p>
 </div>
 

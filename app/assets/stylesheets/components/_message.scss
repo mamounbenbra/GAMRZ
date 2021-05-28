@@ -1,6 +1,8 @@
 .message-container {
   display: flex;
 }
+
+
 .message-container.me {
   justify-content: flex-end;
   .message-content {
