@@ -35,6 +35,22 @@
   transition: all 0.3s ease-in-out;
 }
 
+.btn-neon {
+  background-color: #3e517a;
+  color: var(--text-neon);
+  border: var(--text-neon) 4px solid;
+  padding: 0.3em 1em;
+  border-radius: 0.8em;
+  box-shadow: inset 0 0 0.8em 0 var(--text-neon), 0 0 0.9em 0 var(--text-neon);
+  transition: all 0.3s ease-in-out;
+}
+.btn-neon:hover,
+.btn-neon:focus {
+  text-shadow: none;
+  animation: neon 1.2s cubic-bezier(.54,.56,0,-0.01) infinite;
+}
+
+
 a:hover {
   text-decoration: none;
 }
@@ -42,3 +58,4 @@ a:hover {
 #link-nav:hover {
   color:rgb(215, 200, 240);
 }
+
