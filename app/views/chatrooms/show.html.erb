@@ -1,6 +1,6 @@
 <div class="row">
   <div class=" container col-lg-5 justify-content-center mt-4">
-    <h1><%= @match.to_user == current_user ? @match.from_user.username : @match.to_user.username %></h1>
+    <h1 class="text-center"><%= @match.to_user == current_user ? @match.from_user.username : @match.to_user.username %></h1>
     <div id="messages" class="back1 bg-white rounded chat-box" data-chatroom-id="<%= @chatroom.id %>">
       <%= render @chatroom.messages %>
     </div>
