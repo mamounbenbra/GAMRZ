@@ -1,10 +1,10 @@
-<div class='container mt-4 col-sm-12 col-md-5 justify-content-center'>
+<div class='container mt-4 col-sm-12 col-md-5 border-neon1 pb-4 justify-content-center'>
   <h2 class="text-index">Sign up</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
-    <div class="text-index">
+    <div class="text-white text-index">
       <%= f.input :email,
                   required: true,
                   autofocus: true,
@@ -30,9 +30,10 @@
     </div>
 
     <div class="form-actions">
-    <%= f.button :submit, "Sign up", class:"btn btn-primary w-100 p-2 mt-2 mb-4" %>
+    <%= f.button :submit, "Sign up", class:"btn nsm w-100 p-2 mt-2 mb-4" %>
     </div>
   <% end %>
 
   <%= render "devise/shared/links" %>
 </div>
+
