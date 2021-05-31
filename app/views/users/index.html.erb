@@ -1,67 +1,68 @@
-<div class="d-flex flex-column align-items-center">
-  <button class="btn mt-4 btn-primary" id="btn-hidden"><i class="far fa-edit"></i></button>
-  <div class="cont col-sm-12 col-md-6 col-lg-4 w-100 p-3 d-none" style="background-color: #00000040" id="btn-hidden2">
-    <%= form_tag users_path, method: :get do %>
-      <%= select_tag :region,
-        options_for_select(User::REGIONS, selected: params[:region]),
-        include_blank: "Region",
-        class: "form-control mt-2"
-      %>
-      <%= select_tag :rank,
-        options_for_select(User::RANKS, selected: params[:rank]),
-        include_blank: "Rank",
-        class: "form-control mt-2"
-      %>
-      <%= select_tag :style,
-        options_for_select(User::STYLES, selected: params[:style]),
-        include_blank: "Style",
-        class: "form-control mt-2"
-      %>
-      <%= select_tag :language,
-        options_for_select(User::LANGUAGES, selected: params[:language]),
-        include_blank: "Language",
-        class: "form-control mt-2"
-      %>
-      <%= submit_tag "Search", class: "btn w-100 mt-3 br-4 btn-primary" %>
+<div class="row justify-content-center align-items-start mt-5 mb-5">
+  <div class=" col-lg-4 border-neon">
+    <div>
+      <div class="p-4">
+        <%= form_tag users_path, method: :get do %>
+          <%= select_tag :region,
+            options_for_select(User::REGIONS, selected: params[:region]),
+            include_blank: "Region",
+            class: "form-control mt-2"
+          %>
+          <%= select_tag :rank,
+            options_for_select(User::RANKS, selected: params[:rank]),
+            include_blank: "Rank",
+            class: "form-control mt-2"
+          %>
+          <%= select_tag :style,
+            options_for_select(User::STYLES, selected: params[:style]),
+            include_blank: "Style",
+            class: "form-control mt-2"
+          %>
+          <%= select_tag :language,
+            options_for_select(User::LANGUAGES, selected: params[:language]),
+            include_blank: "Language",
+            class: "form-control mt-2"
+          %>
+          <%= submit_tag "Search", class: "btn w-100 mt-3 br-4 btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-lg-6">
+    <% if @user != nil %>
+      <div class="container text-center">
+        <div>
+          <div class="border-neon">
+            <div class="display-e">
+              <img class="rounded-circle" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
+
+            </div>
+            <div class="display-l">
+              <h1 id='username'><%= @user.username%></h1>
+              <div class="text-left">
+                <h5><i class="fab fa-hackerrank mr-4"></i><%= @user.rank %></h5>
+                <h5><i class="fas fa-hat-cowboy-side" style="margin-right: 20px;"></i><%= @user.style %></h5>
+                <h5><i class="fas fa-globe-americas mr-4"></i><%= @user.region %></h5>
+                <h5><i class="fas fa-language" style="margin-right: 20px;"></i><%= @user.language %></h5>
+              </div>
+            </div>
+            <div class='d-flex justify-content-between mb-2 p-0 w-100'>
+              <%= link_to(dislike_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]), id: "no_btn") do %>
+                <i style="font-size: 60px; color: #D897B0" data-id="<%=@user.id%>" class="fas fa-times-circle"></i>
+              <% end %>
+              <%= link_to(approve_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]), id: "yes_btn") do %>
+                <i style="font-size: 60px; color: #00A676" data-id="<%=@user.id%>" class="fas fa-check-circle"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% elsif params[:language] != "" || params[:style] != "" || params[:region] != "" || params[:rank] != "" %>
+      <h2 class="text-index"> No users matching your filter, please change your preferences </h2>
+    <% else %>
+      <h2 class="text-index"> No users to match anymore, come back later le sang </h2>
     <% end %>
   </div>
 </div>
-
-<% if @user != nil %>
-  <div class="container text-center">
-    <div class="d-flex flex-column align-items-center">
-      <div class="cont col-sm-12 col-md-6 col-lg-4 w-100 border-neon">
-        <div class="display-e">
-          <img class="rounded-circle" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
-
-        </div>
-        <div class="display-l">
-          <h1 id='username'><%= @user.username%></h1>
-          <div class="text-left">
-            <h5><i class="fab fa-hackerrank mr-4"></i><%= @user.rank %></h5>
-            <h5><i class="fas fa-hat-cowboy-side" style="margin-right: 20px;"></i><%= @user.style %></h5>
-            <h5><i class="fas fa-globe-americas mr-4"></i><%= @user.region %></h5>
-            <h5><i class="fas fa-language" style="margin-right: 20px;"></i><%= @user.language %></h5>
-          </div>
-        </div>
-        <div class='d-flex justify-content-between mb-2 p-0 w-100'>
-          <%= link_to(dislike_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]), id: "no_btn") do %>
-            <i style="font-size: 60px; color: #D897B0" data-id="<%=@user.id%>" class="fas fa-times-circle"></i>
-          <% end %>
-          <%= link_to(approve_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]), id: "yes_btn") do %>
-            <i style="font-size: 60px; color: #00A676" data-id="<%=@user.id%>" class="fas fa-check-circle"></i>
-          <% end %>
-        </div>
-      </div>
-          <div class=' arrows d-flex justify-content-between ml-250 p-0 w-50'>
-            <h5><i class="fas fa-arrow-left"></i>Nope!</h5>
-            <h5>Yup!<i class="fas fa-arrow-right"></i></h5>
-            <h5></h5>
-          </div>
-    </div>
-  </div>
-<% elsif params[:language] != "" || params[:style] != "" || params[:region] != "" || params[:rank] != "" %>
-  <h2 class="text-index"> No users matching your filter, please change your preferences </h2>
-<% else %>
-  <h2 class="text-index"> No users to match anymore, come back later le sang </h2>
-<% end %>
