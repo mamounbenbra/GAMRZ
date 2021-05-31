@@ -13,6 +13,8 @@
       <h5><i class="fas fa-language" style="margin-right: 20px;"></i><%=  user.language %></h5>
       <h5><i class="fas fa-hat-cowboy-side" style="margin-right: 20px;"></i><%=  user.style %></h5>
       <h5><i class="fas fa-calendar-alt mr-4 mb-O"></i><%=  user.age %> years old</h5>
+      <h5><%= user.Steam_Username %></h5>
+      <%= link_to "Add on steam", @x, target:"blank"%>
     </div>
       <div class="card-body">
         <% if policy( user).edit? %>
