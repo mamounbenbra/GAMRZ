@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     if params[:language].present?
       @users = @users.where(language: params[:language])
     end
-
+    @match_mutual = params[:mutual]
     @user = @users.sample
     @current_user = current_user
     authorize @current_user
@@ -53,15 +53,17 @@ class UsersController < ApplicationController
     potential_match = Match.where(to_user_id: current_user.id, from_user_id: @user.id)
     already_liked = potential_match.count
     they_like_us = already_liked.positive?
+    @match_mutual = false
     if they_like_us
       chatroom = Chatroom.create!
       @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: true, chatroom_id: chatroom.id)
       potential_match.update(mutual: true, chatroom_id: chatroom.id)
+      @match_mutual = true
     else
       @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id)
     end
     @match.save
-    redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language])
+    redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language], mutual: @match_mutual)
     @current_user = current_user
     authorize @current_user
   end
@@ -71,6 +73,7 @@ class UsersController < ApplicationController
     potential_match = Match.where(to_user_id: current_user.id, from_user_id: @user.id)
     already_liked = potential_match.count
     they_like_us = already_liked.positive?
+    @match_mutual = false
     if they_like_us
       potential_match.update(mutual: nil)
       @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: nil)
@@ -78,7 +81,7 @@ class UsersController < ApplicationController
       @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: nil)
     end
     @match.save
-    redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language])
+    redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language], mutual: @match_mutual)
     @current_user = current_user
     authorize @current_user
   end
