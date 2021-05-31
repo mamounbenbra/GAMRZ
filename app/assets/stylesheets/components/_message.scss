@@ -77,14 +77,23 @@
 }
 
 .chat-contact {
-  background: #3D348B;
+  background: transparent;
   border-radius: 2px;
   margin-top: 4px;
   margin-bottom: 4px;
 }
 
+#chat-bar:hover {
+  background-color: rgba(255, 255, 255, 0.144);
+  border: 0.5px solid white;
+  transition: 0.6s ease-in;
+}
+
 .chat-contact > a {
   color: #48dbfb;
+  &:hover{
+    color:rgb(215, 200, 240);
+  }
 }
 
 .form_wrapper-again {
