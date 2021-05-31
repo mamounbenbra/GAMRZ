@@ -1,4 +1,4 @@
-<div class="message-container bg-white <%= "me" if message.user == current_user && !defined?(for_other) %>" id="message-<%= message.id %>">
+<div class="message-container <%= "me" if message.user == current_user && !defined?(for_other) %>" id="message-<%= message.id %>">
   <div class="message-content">
     <i class="author">
       <span><%= message.user.username %></span>

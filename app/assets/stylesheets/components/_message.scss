@@ -12,10 +12,11 @@
   }
 }
 .message-content > p {
-  background-color: #eeee;
+  background-color: rgba(110, 175, 219, 0.933);
   padding: 8px 16px;
   border-radius: 20px;
   width: min-content;
+  color: rgb(255, 255, 255);
   inline-size: max-content;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -30,7 +31,7 @@
 .me > .message-content >  p {
   right: 95%;
   color: white;
-  background-color: #3D348B;
+  background-color: #e9e7ff71;
   margin-right: 10px;
 }
 
@@ -91,12 +92,19 @@
     right: 10px;
     top: 8px;
     font-size: 23px;
-    color: #3e338b;
+    color: #f6f6f6;
   }
   input[type="submit"] {
     position: absolute;
+    color: white;
+    background-color: transparent;
     right: 0;
     top: 0;
     opacity: 0;
   }
+}
+
+.form-control{
+  background-color: transparent !important;
+  color: white !important;
 }
