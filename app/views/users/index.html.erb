@@ -1,5 +1,54 @@
+
+<style>
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 200px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.ak {
+  background-image: url(https://cdn.dribbble.com/users/90526/screenshots/3607574/main.gif);
+  background-size: cover;
+  background-position: center;
+  width: 100%%;
+  height: 200px;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
 <div class="row justify-content-center align-items-start mt-5 mb-5">
-  <div class=" col-lg-4 border-neon">
+  <div class=" col-lg-4 border-neon" style="background-color: #0504088f !important;">
     <div>
       <div class="p-4">
         <%= form_tag users_path, method: :get do %>
@@ -34,9 +83,9 @@
     <% if @user != nil %>
       <div class="container text-center">
         <div>
-          <div class="border-neon">
+          <div class="border-neon" style="background-color: #0504088f !important;">
             <div class="display-e">
-              <img class="rounded-circle" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
+              <img class="rounded-circle" style="width: 100px; height: 100px" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
 
             </div>
             <div class="display-l">
@@ -66,3 +115,47 @@
     <% end %>
   </div>
 </div>
+
+
+<%# modal pop up  %>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="ak"></div>
+    <h2 class="text-center">It's a match</h2>
+  </div>
+
+</div>
+
+<% p @match_mutual %>
+  <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+<% if @match_mutual == "true" %>
+<script>
+var modal = document.getElementById("myModal");
+modal.style.display = "block";
+</script>
+<% end %>
+
+

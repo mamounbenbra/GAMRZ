@@ -13,6 +13,8 @@
       <h5><i class="material-icons" style="margin-right: 20px;">record_voice_over</i><%=  user.language %></h5>
       <h5><i class="material-icons" style="margin-right: 20px;">style</i><%=  user.style %></h5>
       <h5><i class="material-icons" style="margin-right: 20px; margin-bottom: -2px;">cake</i><%=  user.age %> years old</h5>
+      <h5><%= user.Steam_Username %></h5>
+      <%= link_to "Add on steam", @x, target:"blank"%>
     </div>
       <div class="card-body">
         <% if policy( user).edit? %>

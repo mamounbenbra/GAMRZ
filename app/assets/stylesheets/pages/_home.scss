@@ -27,7 +27,9 @@ a {
   text-decoration: none;
 }
 body {
-  background-image: url(https://png.pngtree.com/thumb_back/fw800/back_our/20190628/ourmid/pngtree-original-gorgeous-blue-gradient-background-image_275515.jpg);
+  background-image: url(home.jpg);
+  background-attachment: fixed;
+  background-position-x: -40px;
   background-size: cover;
   font-family: 'Poppins', 'Courier New', Courier, monospace;
 }
@@ -127,12 +129,16 @@ body {
 }
 
 .c{
-  color: #eabffa;
+  color: rgba(255, 228, 196, 0.623);
 }
 .banner {
   background-size: cover;
   background-position: center;
   padding: 130px 0;
+}
+
+.oui{
+  background-color: rgb(84, 89, 97);
 }
 
 .banner h1 {
