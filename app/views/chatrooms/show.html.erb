@@ -4,10 +4,13 @@
     <div id="messages" class="back1 bg-white rounded chat-box" data-chatroom-id="<%= @chatroom.id %>">
       <%= render @chatroom.messages %>
     </div>
-      <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-        <%= f.input :content, label: false, style: "width: 100vw" %>
+      <%= simple_form_for [ @chatroom, @message ], remote: true, html: { autocomplete: 'off' } do |f| %>
+      <div class="form_wrapper-again">
+      <i class="fas fa-arrow-alt-circle-right"></i>
+        <%= f.input :content, label: false%>
         <%= f.submit 'send', class: "pr-4 mt-0 pt-0 pb-0 pl-4 bg-primary"%>
         <% end %>
+      </div>
     <p><%= link_to "back to your chatroom", chatrooms_path %></p>
     <p><%= link_to "back to your matches", user_matches_path(current_user)%></p>
   </div>

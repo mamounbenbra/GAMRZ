@@ -83,3 +83,20 @@
 .chat-contact > a {
   color: #48dbfb;
 }
+
+.form_wrapper-again {
+  position: relative;
+  .fa-arrow-alt-circle-right {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    font-size: 23px;
+    color: #3e338b;
+  }
+  input[type="submit"] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+  }
+}
