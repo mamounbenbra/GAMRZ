@@ -15,6 +15,8 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
     @match = Match.find_by(chatroom: @chatroom)
+    user = User.find_by(id: @match.from_user_id)
+    @x = "https://steamcommunity.com/search/users/#text=#{user.Steam_Username}"
     authorize @chatroom
   end
 end

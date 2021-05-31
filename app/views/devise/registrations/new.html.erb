@@ -19,6 +19,7 @@
       <%= f.input :first_name, required: true, autofocus: true %>
       <%= f.input :last_name, required: true, autofocus: true %>
       <%= f.input :username, required: true, autofocus: true %>
+      <%= f.input :Steam_Username, autofocus: true %>
       <%= f.input :age, autofocus: true %>
       <%= f.input :region, required: true, as: :select, collection: User::REGIONS %>
       <%= f.input :language, required: true, as: :select, collection: User::LANGUAGES %>
