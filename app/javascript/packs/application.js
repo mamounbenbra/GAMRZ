@@ -29,8 +29,10 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initChatroomCable } from '../channels/chatroom_channel';
 import {btnHidden} from "./btn-hidden";
+import {swipe} from "./swipe";
 document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   btnHidden();
+  swipe();
 });
 
