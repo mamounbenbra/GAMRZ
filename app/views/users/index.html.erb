@@ -1,5 +1,5 @@
 <div class="row justify-content-center align-items-start mt-5 mb-5">
-  <div class=" col-lg-4 border-neon">
+  <div class=" col-lg-4 border-neon" style="background-color: #0504088f !important;">
     <div>
       <div class="p-4">
         <%= form_tag users_path, method: :get do %>
@@ -34,9 +34,9 @@
     <% if @user != nil %>
       <div class="container text-center">
         <div>
-          <div class="border-neon">
+          <div class="border-neon" style="background-color: #0504088f !important;">
             <div class="display-e">
-              <img class="rounded-circle" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
+              <img class="rounded-circle" style="width: 100px; height: 100px" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
 
             </div>
             <div class="display-l">
