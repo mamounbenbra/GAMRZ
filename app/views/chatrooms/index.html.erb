@@ -13,11 +13,13 @@
   <% if @chatrooms.any? %>
     <nav class="nav flex-column">
     <% @chatrooms.each do |chatroom| %>
-      <div class="d-flex align-items-center chat-contact">
-        <div>
-          <img class="user_img mb-2 ml-2" src="<%= chatroom.other_user(current_user).photo.attached? ? (cl_image_path chatroom.other_user(current_user).photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
-        </div>
-        <%= link_to chatroom.other_user(current_user).username , chatroom_path(chatroom), class: "nav-link room-nav-link" %>
+      <div class="d-flex align-items-center chat-contact" id="chat-bar">
+        <% if chatroom.other_user(current_user)%>
+          <div>
+            <img class="user_img mb-2 ml-2" src="<%= chatroom.other_user(current_user).photo.attached? ? (cl_image_path chatroom.other_user(current_user).photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
+          </div>
+          <%= link_to chatroom.other_user(current_user).username , chatroom_path(chatroom), class: "nav-link room-nav-link", id: "chat-link" %>
+        <% end %>
       </div>
       <% end %>
     </nav>

@@ -15,13 +15,22 @@
   border-radius: 7px;
   color: #AFAFED;
   font-family: 'Josefin Sans', sans-serif;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.11) 0px 5px 15px;
   width: auto;
 }
+
+.card1{
+  background-color: #4e4b665e;
+  margin: 3px;
+  padding: 30px;
+  border-radius: 8px;
+}
+
 
 p {
   margin-bottom: 0px;
 }
+
 
 #username{
   font-family: 'Rajdhani', sans-serif;
