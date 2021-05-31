@@ -11,13 +11,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="marginss" >
+        <li class="marginss mr-4" id='username' >
           <%= link_to "Home", "/", class: "text-index", id: "link-nav" %>
         </li>
-        <li class="marginss" >
+        <li class="marginss mr-4" id='username' >
           <%= link_to "Swipe", users_path , class: "text-index", id: "link-nav" %>
         </li>
-        <li class="marginss" >
+        <li class="marginss mr-4" id='username' >
           <%= link_to "Matches", chatrooms_path , class: "text-index", id: "link-nav" %>
         </li>
         <li class="nav-item dropdown">
@@ -29,8 +29,8 @@
           </div>
         </li>
       <% else %>
-        <li class="text-index">
-          <%= link_to "Login", new_user_session_path, class: "text-index" %>
+        <li class="text-index mb-4 mr-4">
+          <%= link_to "Login", new_user_session_path, class: "text-index nsm pl-4 pr-4 pt-2 pb-2" %>
         </li>
       <% end %>
     </ul>
