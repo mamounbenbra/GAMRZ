@@ -15,6 +15,7 @@
   background-color: rgba(110, 175, 219, 0.933);
   padding: 8px 16px;
   border-radius: 20px;
+  border-top-right-radius: 6% 50%;
   width: min-content;
   color: rgb(255, 255, 255);
   inline-size: max-content;
@@ -33,6 +34,7 @@
   color: white;
   background-color: #e9e7ff71;
   margin-right: 10px;
+  border-top-right-radius: 4% 60%;
 }
 
 .chat-box {
