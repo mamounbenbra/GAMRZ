@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @other_one = ""
     ids_to_kill = []
     Match.where(from_user_id: current_user.id).each do |item|
       ids_to_kill << item.to_user_id
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
       @users = @users.where(language: params[:language])
     end
     @match_mutual = params[:mutual]
+    @other_one = params[:other_one] if params[:other_one].present?
     @user = @users.sample
     @current_user = current_user
     authorize @current_user
@@ -63,7 +65,7 @@ class UsersController < ApplicationController
       @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id)
     end
     @match.save
-    redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language], mutual: @match_mutual)
+    redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language], mutual: @match_mutual, other_one: @match.to_user_id)
     @current_user = current_user
     authorize @current_user
   end
