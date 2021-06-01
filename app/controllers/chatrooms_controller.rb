@@ -1,6 +1,6 @@
 class ChatroomsController < ApplicationController
-
   def index
+    messages?
     @chatrooms = policy_scope(Match).where("from_user_id = ? OR to_user_id = ?", current_user.id, current_user.id)
     @chatrooms = @chatrooms.map{ |match| match.chatroom }.uniq.reject(&:nil?)
 
@@ -18,6 +18,20 @@ class ChatroomsController < ApplicationController
     user = User.find_by(id: @match.from_user_id)
     @x = "https://steamcommunity.com/search/users/#text=#{user.Steam_Username}"
     authorize @chatroom
+  end
+
+
+  def messages?
+    puts "i am playing messages ?"
+    @empty_chatroom = false
+    matches = Match.where(from_user: current_user.id, mutual: true)
+    if matches.any?
+      matches.each do |match|
+        if match.chatroom.messages.none?
+          @empty_chatroom = true
+        end
+      end
+    end
   end
 
   def destroy

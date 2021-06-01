@@ -1,3 +1,4 @@
+
 const swipe_left = () => {
     const card = document.querySelector(".main_card");
     card.classList.add("animate__animated", "animate__backOutLeft");

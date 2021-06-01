@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   after_action :verify_authorized
+  before_action :messages?
 
 
   def edit
@@ -50,21 +51,28 @@ class UsersController < ApplicationController
     authorize @user
   end
 
- def like
+  def like
     @user = User.find(params[:id])
-    potential_match = Match.where(to_user_id: current_user.id, from_user_id: @user.id)
-    already_liked = potential_match.count
-    they_like_us = already_liked.positive?
-    @match_mutual = false
-    if they_like_us
-      chatroom = Chatroom.create!
-      @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: true, chatroom_id: chatroom.id)
-      potential_match.update(mutual: true, chatroom_id: chatroom.id)
-      @match_mutual = true
-    else
-      @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id)
+    @user.with_lock do
+      potential_match = Match.where(to_user_id: current_user.id, from_user_id: @user.id)
+      already_liked = potential_match.count
+      they_like_us = already_liked.positive?
+      @match_mutual = false
+      @match = Match.find_by(from_user_id: current_user.id, to_user_id: @user.id)
+      if @match.nil?
+        if they_like_us
+          chatroom = Chatroom.create!
+          @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: true, chatroom_id: chatroom.id)
+          potential_match.update(mutual: true, chatroom_id: chatroom.id)
+          @match_mutual = true
+          ChannelMatchChannel.broadcast_to(@user, "Heyyyy i am a notification")
+        else
+          @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id)
+        end
+        @match.save
+      end
     end
-    @match.save
+
     sleep 0.3
     redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language], mutual: @match_mutual, other_one: @match.to_user_id)
     @current_user = current_user
@@ -88,5 +96,18 @@ class UsersController < ApplicationController
     redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language], mutual: @match_mutual)
     @current_user = current_user
     authorize @current_user
+  end
+
+  def messages?
+    puts "i am playing messages ?"
+    @empty_chatroom = false
+    matches = Match.where(from_user: current_user.id, mutual: true)
+    if matches.any?
+      matches.each do |match|
+        if match.chatroom.messages.none?
+          @empty_chatroom = true
+        end
+      end
+    end
   end
 end
