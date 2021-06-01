@@ -19,4 +19,13 @@ class ChatroomsController < ApplicationController
     @x = "https://steamcommunity.com/search/users/#text=#{user.Steam_Username}"
     authorize @chatroom
   end
+
+  def destroy
+    @chatroom = Chatroom.find(params[:id])
+    authorize @chatroom
+    @chatroom.messages.destroy_all
+    @chatroom.destroy
+    redirect_to chatrooms_path
+  end
+
 end
