@@ -55,6 +55,13 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+<%# .main_card .rigth_swipe {
+    transition-timing-function: ease-out;
+    transition: 2s;
+    transform: translateX(50%);
+} %>
+
 </style>
 
 <div class="row justify-content-center align-items-start mt-5 mb-5">
@@ -87,11 +94,10 @@
       </div>
     </div>
   </div>
-
-
+  
   <div class="col-lg-6">
     <% if @user != nil %>
-      <div class="container text-center">
+      <div class="main_card container text-center">
         <div>
           <div class="border-neon" style="background-color: #0504088f !important;">
             <div class="display-e">
@@ -111,7 +117,7 @@
               <%= link_to(dislike_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]), id: "no_btn") do %>
                 <i style="font-size: 60px; color: #D897B0" data-id="<%=@user.id%>" class="fas fa-times-circle"></i>
               <% end %>
-              <%= link_to(approve_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]), id: "yes_btn") do %>
+              <%= link_to(approve_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]), id: "yes_btn", class:"rigth_swipe") do %>
                 <i style="font-size: 60px; color: #00A676" data-id="<%=@user.id%>" class="fas fa-check-circle"></i>
               <% end %>
             </div>

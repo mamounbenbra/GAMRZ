@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 
+import { linkClickSelector } from "@rails/ujs";
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -30,9 +31,11 @@ import "bootstrap";
 import { initChatroomCable } from '../channels/chatroom_channel';
 import {btnHidden} from "./btn-hidden";
 import {swipe} from "./swipe";
+import {click} from "./click";
 document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   btnHidden();
   swipe();
+  click();
 });
 
