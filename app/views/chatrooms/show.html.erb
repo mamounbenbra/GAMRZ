@@ -1,4 +1,4 @@
-<div class="row justify-content-center align-items-start mt-5 mb-5">
+<div class="row justify-content-center align-items-start mt-1 mb-5">
   <div class=" col-lg-5 card border-neon mr-5">
     <div class="text-center">
     <% @match.to_user == current_user ? user = @match.from_user : user = @match.to_user %>
@@ -14,7 +14,12 @@
       <h5><i class="material-icons" style="margin-right: 20px;">style</i><%=  user.style %></h5>
       <h5><i class="material-icons" style="margin-right: 20px; margin-bottom: -2px;">cake</i><%=  user.age %> years old</h5>
       <h5><%= user.Steam_Username %></h5>
-      <%= link_to "Add on steam", @x, target:"blank"%>
+        <div class="d-flex justify-content-center w-100">
+            <p style="margin-right: 10px"> Add on    </p>
+          <%= link_to @x, target:"blank" do %>
+            <i style="color: White; font-size: 40px; margin: 0px" class="fab fa-steam"></i>
+          <% end %>
+        </div>
     </div>
       <div class="card-body">
         <% if policy( user).edit? %>
