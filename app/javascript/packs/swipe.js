@@ -1,7 +1,7 @@
 const swipe = () => {
     $( document ).ready(function() {
-        $(document).keyup(function(event){    
-            var key = event.which;                
+        $(document).keyup(function(event){
+            var key = event.which;
                     switch(key) {
                     case 37:
                         // Key left.
@@ -10,6 +10,7 @@ const swipe = () => {
                         card.classList.add("animate__animated", "animate__backOutLeft");
                         no.click();
                         break;
+
                     case 39:
                         // Key right.
                         var yes = document.getElementById("yes_btn")
@@ -17,12 +18,11 @@ const swipe = () => {
                         card2.classList.add("animate__animated", "animate__backOutRight");
                         yes.click()
                         break;
-                }   
+                }
             });
         });
 }
-  
-  
-  
+
+
+
   export { swipe } ;
-  
