@@ -48,33 +48,24 @@ class UsersController < ApplicationController
     authorize @user
   end
 
-  def like
+ def like
     @user = User.find(params[:id])
     potential_match = Match.where(to_user_id: current_user.id, from_user_id: @user.id)
     already_liked = potential_match.count
     they_like_us = already_liked.positive?
     @match_mutual = false
-    if Match.where(from_user_id: current_user.id,  to_user_id: @user.id) == []
-      if they_like_us
-        chatroom = Chatroom.create!
-        @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: true, chatroom_id: chatroom.id)
-        potential_match.update(mutual: true, chatroom_id: chatroom.id)
-        @match_mutual = true
-        @match.save
-        p @match_mutual
-        p "J'existais pas, j'ai créé chatroom & mutual like"
-        else
-          @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id)
-          @match.save
-        end
+    if they_like_us
+      chatroom = Chatroom.create!
+      @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: true, chatroom_id: chatroom.id)
+      potential_match.update(mutual: true, chatroom_id: chatroom.id)
+      @match_mutual = true
     else
-      p "J existe déjà, donc je fais rien"
+      @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id)
     end
+    @match.save
+    redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language], mutual: @match_mutual)
     @current_user = current_user
     authorize @current_user
-    p params
-    p @match_mutual
-    redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language], mutual: @match_mutual)
   end
 
   def dislike
