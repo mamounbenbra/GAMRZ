@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   end
   get "approve/:id", to: "users#like", as: :approve_user
   get "dislike/:id", to: "users#dislike", as: :dislike_user
+  get "destroy/:id", to: "chatrooms#destroy", as: :destroy_chatroom
 end

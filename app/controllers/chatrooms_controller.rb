@@ -20,6 +20,7 @@ class ChatroomsController < ApplicationController
     authorize @chatroom
   end
 
+
   def messages?
     puts "i am playing messages ?"
     @empty_chatroom = false
@@ -32,4 +33,13 @@ class ChatroomsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @chatroom = Chatroom.find(params[:id])
+    authorize @chatroom
+    @chatroom.messages.destroy_all
+    @chatroom.destroy
+    redirect_to chatrooms_path
+  end
+
 end

@@ -26,6 +26,10 @@
   border-radius: 8px;
 }
 
+.card-body{
+  padding-bottom: 3px;
+}
+
 
 p {
   margin-bottom: 0px;
@@ -33,6 +37,11 @@ p {
 
 
 #username{
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 2px;
+}
+
+.si{
   font-family: 'Rajdhani', sans-serif;
   letter-spacing: 2px;
 }

@@ -7,7 +7,7 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "animate.css/animate.min.css";
+@import "animate.css/animate";
 
 // Your CSS partials
 @import "components/index";
@@ -88,3 +88,6 @@ a:hover {
   margin-left: 214px;
 }
 
+.form-control option {
+  color: black;
+}

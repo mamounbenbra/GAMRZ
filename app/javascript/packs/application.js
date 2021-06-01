@@ -40,6 +40,10 @@ initNotifications();
 document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   btnHidden();
-  click();
+
+  if (document.querySelector(".main_card")){
+    swipe();
+    click();
+  }
 });
 
