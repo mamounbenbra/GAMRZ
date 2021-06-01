@@ -94,7 +94,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="col-lg-6">
     <% if @user != nil %>
       <div class="main_card container text-center">
@@ -125,9 +125,9 @@
         </div>
       </div>
     <% elsif params[:language] != "" || params[:style] != "" || params[:region] != "" || params[:rank] != "" %>
-      <h2 class="text-index"> No users matching your filter, please change your preferences </h2>
+      <h2 class="text-index text-right si m-0" style="color: White"> No users matching your filter, please change your preferences </h2>
     <% else %>
-      <h2 class="text-index"> No users to match anymore, come back later le sang </h2>
+      <h2 class="text-index text-right si m-0" style="color: White"> No users to match anymore, come back later le sang </h2>
     <% end %>
   </div>
 </div>
@@ -139,7 +139,7 @@
   <div class="modal-content justify-content-center match-border">
     <span class="close">&times;</span>
       <% if @other_one != "" && @other_one.present?%>
-        <h2 class="text-center match-title">It's a Match With <%= User.find(@other_one.to_i).username%></h2>
+        <h2 class="text-center match-title">You matched with <%= User.find(@other_one.to_i).username%> !</h2>
         <div class="text-center">
           <img src="<%=  User.find(@other_one.to_i).photo.attached? ? (cl_image_path  User.find(@other_one.to_i).photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>" alt="Card image cap" class="mt-3 rounded-circle center-block justify-content-center" alt='photo' style= "height: 200px; width: 200px; object-fit: cover;">
         </div>

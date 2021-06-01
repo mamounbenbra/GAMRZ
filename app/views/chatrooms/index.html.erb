@@ -18,9 +18,9 @@
           <%= link_to chatroom_path(chatroom) do %>
             <% if chatroom.other_user(current_user)%>
               <div>
-                  <img class="user_img mb-2 ml-2" src="<%= chatroom.other_user(current_user).photo.attached? ? (cl_image_path chatroom.other_user(current_user).photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
+                  <img class="user_img mb-2 border ml-2" src="<%= chatroom.other_user(current_user).photo.attached? ? (cl_image_path chatroom.other_user(current_user).photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
               </div>
-              <%= link_to chatroom.other_user(current_user).username , chatroom_path(chatroom), class: "nav-link room-nav-link", id: "chat-link" %>
+              <%= link_to chatroom.other_user(current_user).username , chatroom_path(chatroom), class: "nav-link si room-nav-link", id: "chat-link" %>
               <div class="ml-auto mr-5">
                 <%= link_to(destroy_chatroom_path(chatroom)) do %>
                   <i style="color: White; font-size: 25px" class="fas fa-times"></i>
@@ -38,7 +38,7 @@
     </nav>
   <% else %>
     <div class="text-muted">
-      <p>The are no chatrooms</p>
+      <p>No matches/chatrooms yet.</p>
     </div>
   <% end %>
 </div>
