@@ -8,15 +8,14 @@ const swipe = () => {
                         var no = document.getElementById("no_btn")
                         console.log(no)
                         no.click()
-
-                        setTimeout(function () {  break; }, 1000);
+                        break;
 
                     case 39:
                         // Key right.
                         var yes = document.getElementById("yes_btn")
                         console.log(yes)
                         yes.click()
-                        setTimeout(function () {  break; }, 1000);
+                        break;
                 }
             });
         });
