@@ -7,8 +7,10 @@ const initChatroomCable = () => {
     const id = messagesContainer.dataset.chatroomId;
     consumer.subscriptions.create({ channel: "ChatroomChannel", id: id }, {
       received(data) {
-        messagesContainer.insertAdjacentHTML('beforeend', data);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        setTimeout(() => { 
+          messagesContainer.insertAdjacentHTML('beforeend', data);
+          messagesContainer.scrollTop = messagesContainer.scrollHeight; 
+        }, 200)
       },
     });
   }
