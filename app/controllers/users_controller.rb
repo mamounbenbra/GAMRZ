@@ -55,14 +55,14 @@ class UsersController < ApplicationController
     they_like_us = already_liked.positive?
     @match_mutual = false
     if they_like_us
-      if Match.where(from_user_id: current_user.id,  to_user_id: @user.id)
-        p "J existe déjà, donc je fais rien"
-      else
-        @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: true, chatroom_id: chatroom.id)
+      if Match.where(from_user_id: current_user.id,  to_user_id: @user.id) == []
+        chatroom = Chatroom.create!
+         @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: true, chatroom_id: chatroom.id)
         potential_match.update(mutual: true, chatroom_id: chatroom.id)
         @match_mutual = true
-        chatroom = Chatroom.create!
         p "J'existais pas, j'ai créé chatroom & mutual like"
+      else
+        p "J existe déjà, donc je fais rien"
       end
 
     else
