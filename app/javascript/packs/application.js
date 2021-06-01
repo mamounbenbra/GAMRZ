@@ -29,13 +29,17 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initChatroomCable } from '../channels/chatroom_channel';
+import { initNotifications } from '../channels/initNotifications';
 import {btnHidden} from "./btn-hidden";
 import {swipe} from "./swipe";
 import {click} from "./click";
+
+swipe();
+initNotifications();
+
 document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   btnHidden();
-  swipe();
   click();
 });
 

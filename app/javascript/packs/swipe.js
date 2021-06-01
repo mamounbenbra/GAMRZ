@@ -1,5 +1,4 @@
 const swipe = () => {
-    $( document ).ready(function() {
         $(document).keyup(function(event){
             var key = event.which;
                     switch(key) {
@@ -20,7 +19,6 @@ const swipe = () => {
                         break;
                 }
             });
-        });
 }
 
 
