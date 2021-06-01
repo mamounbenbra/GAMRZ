@@ -60,15 +60,15 @@ class UsersController < ApplicationController
          @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id, mutual: true, chatroom_id: chatroom.id)
         potential_match.update(mutual: true, chatroom_id: chatroom.id)
         @match_mutual = true
+        @match.save
         p "J'existais pas, j'ai créé chatroom & mutual like"
       else
         p "J existe déjà, donc je fais rien"
       end
-
     else
       @match = Match.new(from_user_id: current_user.id, to_user_id: @user.id)
+      @match.save
     end
-    @match.save
     redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language], mutual: @match_mutual)
     @current_user = current_user
     authorize @current_user
