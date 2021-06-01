@@ -35,7 +35,9 @@ import {click} from "./click";
 document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   btnHidden();
-  swipe();
-  click();
+  if (document.querySelector(".main_card")){
+    swipe();
+    click();
+  }
 });
 
