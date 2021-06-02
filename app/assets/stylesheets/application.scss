@@ -35,8 +35,24 @@
   font-size: 20px;
 }
 
-#new{
+.eff{
   position: absolute;
+  bottom: -40px;
+  left: 151px;
+  background-color: #33508d;
+  border-radius: 50%;
+}
+
+.eff1{
+  position: absolute;
+  bottom: -40px;
+  right: 151px;
+  background-color: #33508d;
+  border-radius: 50%;
+}
+
+#new{
+    position: absolute;
   top: 8px;
   font-size: 10px;
   left: 73px;
