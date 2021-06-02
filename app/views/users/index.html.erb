@@ -71,7 +71,7 @@
         <%= form_tag users_path, method: :get do %>
           <%= select_tag :region,
             options_for_select(User::REGIONS, selected: params[:region]),
-            include_blank: "Region",
+            include_blank: "Server",
             class: "form-control mt-2"
           %>
           <%= select_tag :rank,
