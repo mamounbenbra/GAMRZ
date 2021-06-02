@@ -101,7 +101,7 @@
         <div>
           <div class="border-neon" style="background-color: #0504088f !important;">
             <div class="display-e">
-              <img class="rounded-circle" style="width: 140px; height: 140px" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
+              <img class="rounded-circle" style="border: 0.5px solid white; width: 140px; height: 140px" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
 
             </div>
             <div class="su display-l">
@@ -114,7 +114,7 @@
               </div>
             </div>
               <%= link_to(dislike_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]), id: "no_btn") do %>
-                <i style="font-size: 80px; color: #FE1A1A; opacity: 0.85" data-id="<%=@user.id%>" class="eff fas fa-times-circle"></i>
+                <i style="font-size: 80px; color: #FE1A1A; opacity: 1" data-id="<%=@user.id%>" class="eff fas fa-times-circle"></i>
               <% end %>
               <%= link_to(approve_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]), id: "yes_btn", class:"rigth_swipe") do %>
                 <i style="font-size: 80px; color: #35CE8D" data-id="<%=@user.id%>" class="fas fa-check-circle eff1"></i>
@@ -125,7 +125,7 @@
     <% elsif params[:language] != "" || params[:style] != "" || params[:region] != "" || params[:rank] != "" %>
       <h2 class="text-index text-right si m-0" style="color: White"> No users matching your filter, please change your preferences </h2>
     <% else %>
-      <h2 class="text-index text-right si m-0" style="color: White"> No users to match anymore, come back later le sang </h2>
+      <h2 class="text-index text-right si m-0" style="color: White"> No users to match anymore, come back later.</h2>
     <% end %>
   </div>
 </div>
