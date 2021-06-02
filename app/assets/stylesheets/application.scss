@@ -27,6 +27,27 @@
     }
 }
 
+.su{
+  position: relative;
+}
+
+.yes{
+  font-size: 20px;
+}
+
+#new{
+  position: absolute;
+  top: 8px;
+  font-size: 10px;
+  left: 73px;
+  padding: 7px 4px 7px 4px;
+  background-color:#b13348;
+  color: white;
+  border: 0.1px solid white;
+  border-radius: 50%;
+  margin-top: 0px;
+}
+
 .nsm{
   background-color:#4f7bd8;
   border-radius: 7px;

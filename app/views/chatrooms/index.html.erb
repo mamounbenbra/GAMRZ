@@ -12,30 +12,24 @@
   <% end %>
   <% if @chatrooms.any? %>
     <nav class="nav flex-column">
-
       <% @chatrooms.each do |chatroom| %>
-        <div class="d-flex align-items-center chat-contact" id="chat-bar">
-          <%= link_to chatroom_path(chatroom) do %>
+          <div class="d-flex su align-items-center chat-contact" id="chat-bar">
             <% if chatroom.other_user(current_user)%>
               <div>
                   <img class="user_img mb-2 border ml-2" src="<%= chatroom.other_user(current_user).photo.attached? ? (cl_image_path chatroom.other_user(current_user).photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
+                  <% if chatroom.messages.count == 0 %>
+                    <p id="new" class='si mr-4'>new</p>
+                  <% end %>
               </div>
-              <%= link_to chatroom.other_user(current_user).username , chatroom_path(chatroom), class: "nav-link si room-nav-link", id: "chat-link" %>
-              <p><%= "new" if (chatroom.messages.count == 0)%></p>
-              <div class="ml-auto mr-5">
+              <%= link_to chatroom.other_user(current_user).username , chatroom_path(chatroom), class: "nav-link si ml-2 room-nav-link yes", id: "chat-link" %>
+              <div class="d-flex ml-auto mr-5">
                 <%= link_to(destroy_chatroom_path(chatroom)) do %>
-                  <i style="color: White; font-size: 25px" class="fas fa-times"></i>
+                  <i style="color: White; font-size: 25px" class="m-0 fas fa-times"></i>
                 <% end %>
               </div>
-            <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       <% end %>
-
-
-
-
-
     </nav>
   <% else %>
     <div class="text-muted">
