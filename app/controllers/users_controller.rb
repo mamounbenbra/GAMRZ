@@ -73,7 +73,7 @@ class UsersController < ApplicationController
       end
     end
 
-    sleep 0.3
+    sleep 0.05
     redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language], mutual: @match_mutual, other_one: @match.to_user_id)
     @current_user = current_user
     authorize @current_user
