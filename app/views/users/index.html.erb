@@ -71,7 +71,7 @@
         <%= form_tag users_path, method: :get do %>
           <%= select_tag :region,
             options_for_select(User::REGIONS, selected: params[:region]),
-            include_blank: "Region",
+            include_blank: "Server",
             class: "form-control mt-2"
           %>
           <%= select_tag :rank,
@@ -101,10 +101,10 @@
         <div>
           <div class="border-neon" style="background-color: #0504088f !important;">
             <div class="display-e">
-              <img class="rounded-circle" style="width: 100px; height: 100px" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
+              <img class="rounded-circle" style="border: 0.5px solid white; width: 140px; height: 140px" src="<%= @user.photo.attached? ? (cl_image_path @user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>">
 
             </div>
-            <div class="display-l">
+            <div class="su display-l">
               <h1 id='username'><%= @user.username%></h1>
               <div id='username' class="text-left">
                 <h5><i class="text-white material-icons" style="margin-right: 20px;">equalizer</i></i><%= @user.rank %></h5>
@@ -113,21 +113,19 @@
                 <h5><i class="text-white material-icons" style="margin-right: 20px;">record_voice_over</i><%= @user.language %></h5>
               </div>
             </div>
-            <div class='d-flex justify-content-between mb-2 p-0 w-100'>
               <%= link_to(dislike_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]), id: "no_btn") do %>
-                <i style="font-size: 60px; color: #D897B0" data-id="<%=@user.id%>" class="fas fa-times-circle"></i>
+                <i style="font-size: 80px; color: #FE1A1A; opacity: 1" data-id="<%=@user.id%>" class="eff fas fa-times-circle"></i>
               <% end %>
               <%= link_to(approve_user_path(@user,region: params[:region], style: params[:style], rank: params[:rank], language: params[:language]), id: "yes_btn", class:"rigth_swipe") do %>
-                <i style="font-size: 60px; color: #00A676" data-id="<%=@user.id%>" class="fas fa-check-circle"></i>
+                <i style="font-size: 80px; color: #35CE8D" data-id="<%=@user.id%>" class="fas fa-check-circle eff1"></i>
               <% end %>
-            </div>
           </div>
         </div>
       </div>
     <% elsif params[:language] != "" || params[:style] != "" || params[:region] != "" || params[:rank] != "" %>
       <h2 class="text-index text-right si m-0" style="color: White"> No users matching your filter, please change your preferences </h2>
     <% else %>
-      <h2 class="text-index text-right si m-0" style="color: White"> No users to match anymore, come back later le sang </h2>
+      <h2 class="text-index text-right si m-0" style="color: White"> No users to match anymore, come back later.</h2>
     <% end %>
   </div>
 </div>
