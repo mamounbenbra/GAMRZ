@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
   def like
     @user = User.find(params[:id])
-    @user.with_lock do
+    # @user.with_lock do
       potential_match = Match.where(to_user_id: current_user.id, from_user_id: @user.id)
       already_liked = potential_match.count
       they_like_us = already_liked.positive?
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
         end
         @match.save
       end
-    end
+    # end
 
     sleep 0.3
     redirect_to users_path(region: params[:region], style: params[:style], rank: params[:rank], language: params[:language], mutual: @match_mutual, other_one: @match.to_user_id)
