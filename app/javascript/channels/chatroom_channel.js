@@ -9,7 +9,7 @@ const initChatroomCable = () => {
       received(data) {
         setTimeout(() => {
           messagesContainer.insertAdjacentHTML('beforeend', data);
-        }, 0)
+        }, 150)
       },
     });
   }
