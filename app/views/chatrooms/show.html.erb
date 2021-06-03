@@ -4,7 +4,7 @@
       <div class="d-flex flex-column align-items-start">
         <% @match.to_user == current_user ? user = @match.from_user : user = @match.to_user %>
         <img src="<%=  user.photo.attached? ? (cl_image_path  user.photo.key, crop: :fill) : 'https://source.unsplash.com/random'%>" alt="Card image cap" class="mt-3 rounded-circle center-block" alt='photo' style= "height: 100px; width: 100px; object-fit: cover;">
-        <h1 class="card-title text-center" id='username'><%=  user.username %></h5>
+        <h1 class="mt-2 card-title text-center" id='username'><%=  user.username %></h5>
       </div>
         <%= link_to @x, target:"blank" do %>
           <div class="nsm1 d-flex p-1 justify-content-center mr-1 mt-3 w-100">
