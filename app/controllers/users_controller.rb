@@ -99,7 +99,7 @@ class UsersController < ApplicationController
   end
 
   def messages?
-    puts "i am playing messages ?"
+    puts "i am playingggggg messages ?"
     @empty_chatroom = false
     matches = Match.where(from_user: current_user.id, mutual: true)
     if matches.any?
