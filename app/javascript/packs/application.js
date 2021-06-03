@@ -35,6 +35,7 @@ import {swipe} from "./swipe";
 import {click} from "./click";
 
 swipe();
+click();
 initNotifications();
 
 document.addEventListener('turbolinks:load', () => {
@@ -42,8 +43,7 @@ document.addEventListener('turbolinks:load', () => {
   btnHidden();
 
   if (document.querySelector(".main_card")){
-    swipe();
-    click();
+
   }
 });
 
