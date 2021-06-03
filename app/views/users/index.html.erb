@@ -156,7 +156,9 @@
   // When the user clicks on <span> (x), close the modal
   span.onclick = function(event) {
     if (event.target.className === "close") {
-      window.location.search = "";
+      const path = new URLSearchParams(window.location.search);
+      path.set('mutual', 'false');
+      window.location.search = path.toString();
     }
     modal.style.display = "none";
   }
@@ -164,7 +166,9 @@
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
     if (event.target == modal) {
-      window.location.search = "";
+      const path = new URLSearchParams(window.location.search);
+      path.set('mutual', 'false');
+      window.location.search = path.toString();
       modal.style.display = "none";
     }
   }
