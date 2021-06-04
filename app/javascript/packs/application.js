@@ -36,14 +36,12 @@ import {click} from "./click";
 
 swipe();
 click();
+
+
 initNotifications();
 
 document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
-  btnHidden();
-
-  if (document.querySelector(".main_card")){
-
-  }
+  btnHidden(); 
 });
 
