@@ -1,4 +1,6 @@
 const swipe = () => {
+    if (document.querySelector(".main_card")){
+
         $(document).keyup(function(event){
             var key = event.which;
                     switch(key) {
@@ -19,6 +21,7 @@ const swipe = () => {
                         break;
                 }
             });
+        }
 }
 
 
