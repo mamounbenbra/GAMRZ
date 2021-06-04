@@ -34,8 +34,12 @@ import {btnHidden} from "./btn-hidden";
 import {swipe} from "./swipe";
 import {click} from "./click";
 
-swipe();
-click();
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  swipe();
+  click();
+});
+
 
 
 initNotifications();
